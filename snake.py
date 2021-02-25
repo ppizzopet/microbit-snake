@@ -80,12 +80,11 @@ class Snake(object):
         self.previousDist = None
  
         self.countdownToMove = 0
-        self.delayToMove = 20
  
     def moveSnake(self):
         self.countdownToMove += 1
  
-        if self.countdownToMove == self.delayToMove:
+        if self.countdownToMove == 20:
  
             if self.snakeDist == "up":
                 self.y -= 1
@@ -127,7 +126,7 @@ def run():
  
     food = Food(0, 0)
  
-    while gameLoop:
+    while True:
         microbit.sleep(75)
  
         if not foodOnScreen:
@@ -161,8 +160,7 @@ def run():
         snake.moveSnake()
         snake.drawSnake()
         food.getCollision()
- 
-        # CHECKS IF SNAKE TOUCH THE BORDER
+
         if snake.x > 4 or snake.x < 0 or snake.y > 4 or snake.y < 0:
             gameOver()
  
